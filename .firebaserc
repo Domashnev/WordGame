@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "scrabble-domik": {
+      "hosting": {
+        "WordGame": [
+          "scrabble-casa"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "scrabble-domik"
+  }
+}

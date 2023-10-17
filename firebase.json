@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "WordGame",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}
