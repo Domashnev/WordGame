@@ -8,26 +8,27 @@ import { saveAs } from 'file-saver'
 })
 export class AppComponent implements OnInit {
   title = 'WordGame';
+  fileName = 'Евгений Онегин'
+  words = new Set()
 
   ngOnInit() {
-    this.loadWordsFromFile('assets/eo.txt')
+    this.loadWordsFromFile('assets/' + this.fileName + '.txt')
   }
 
   loadWordsFromFile(fileName: string): void {
-    const words = new Set()
 
     fetch(fileName)
       .then(response => response.text())
-      .then(data => { //\–!-
-        const dWords = data.replace(/[–!?«»(),.;:"'\d[a-zA-Z]/g, '').split('\n')
+      .then(data => {
+        const lineEnd = data.includes('\r\n') ? '\r\n' : (data.includes('\n') ? '\n' : '\r')
+        const dWords = data.replace(/[–/\\’…„!?«»()\[\]<>,.;:"'\d[a-zA-Z]/g, '').split(lineEnd)
         dWords.forEach( line => {
-          const word = line.replace('-', ' ').split(' ').filter(w => w.length>1)
-          if (line.length>1) word.forEach(w => words.add(w.toLowerCase()))
+          const word = line.replace('—', ' ').replace('-', ' ').split(' ').filter(w => w.length>1)
+          if (line.length>1) word.forEach(w => !w.includes('-') && this.words.add(w.toLowerCase()))
         })
-        const wordsArray = Array.from(words).sort()
-        console.log('Слов: ' + wordsArray.length)
-        const blob = new Blob([wordsArray.join('\r')], { type: 'text/plain;charset=utf-8' })
-        saveAs(blob, 'onegin.txt')
+        const wordsArray = Array.from(this.words).sort()
+        const blob = new Blob([wordsArray.join(lineEnd)], { type: 'text/plain;charset=utf-8' })
+        saveAs(blob, this.fileName + ' слова.txt')
       })
       .catch(err => alert(err.message))
   }
