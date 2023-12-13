@@ -8,19 +8,21 @@ import { saveAs } from 'file-saver'
 })
 export class AppComponent implements OnInit {
   title = 'WordGame';
-  fileName = 'Евгений Онегин'
+
+  fileName = 'Божественная комедия'
+
   words = new Set()
   badWords = [
     'гм', 'ль', 'же', 'ту', 'то', 'ан', 'ах',
     'бы', 'во', 'гг', 'за', 'на', 'нв', 'ну',
     'об', 'ой', 'от', 'ох', 'со', 'та', 'ту',
     'ух', 'фр', 'фу', 'ха', 'чу', 'шу', 'эй',
-    'эк', 'эка', 'эх'
+    'эк', 'эка', 'эх', 'спб', 'ка'
   ]
 
   ngOnInit() {
-    this.loadWordsFromFile('assets/' + this.fileName + '.txt')
-    // this.cutDictionary('Евгений Онегин слова', 8)
+    // this.loadWordsFromFile('assets/' + this.fileName + '.txt')
+    this.cutDictionary(this.fileName + ' слова', 8)
   }
 
   loadWordsFromFile(fileName: string): void {
@@ -29,7 +31,7 @@ export class AppComponent implements OnInit {
       .then(response => response.text())
       .then(data => {
         const lineEnd = data.includes('\r\n') ? '\r\n' : (data.includes('\n') ? '\n' : '\r')
-        const dWords = data.replace(/[–/\\’…„!?«»()\[\]<>,.;:"'\d[a-zA-Z]/g, '').split(lineEnd)
+        const dWords = data.replace(/[–/\\’…„!?«»(){}\[\]<>,.;:"'\d[a-zA-Z]/g, '').split(lineEnd)
         dWords.forEach( line => {
           const word = line.replace('—', ' ').replace('-', ' ').split(' ').filter(w => w.length>1)
           if (line.length>1) word.forEach(w => !w.includes('-') && !this.badWords.includes(w.toLowerCase()) && this.words.add(w.toLowerCase()))
