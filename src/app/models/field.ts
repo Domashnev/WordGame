@@ -1,10 +1,11 @@
 import {Cell} from './cell'
 import {CellInfo, FieldDescription} from './fieldDescriptions'
+import { Letter } from './letter';
 
 export class Field {
   cells: Cell[];
   size: number;
-  backgroungImageURL?: string;
+  backgroundImageURL?: string;
 
   constructor(fd: FieldDescription) {
     this.cells = [];
@@ -34,5 +35,20 @@ export class Field {
         this.cells.push(cell);
       }
     }
+  }
+
+  // ряд, начиная с 1
+  getRow(rowNumber: number): Cell[] {
+    return this.cells.filter(r => r.row === rowNumber)
+  }
+
+  getRowNumbers(): number[] {
+    const rn = []
+    for( let i=1; i<=this.size; i++) rn.push(i)
+    return rn
+  }
+
+  putLetter(id: number, letter: Letter): void {
+
   }
 }

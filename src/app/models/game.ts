@@ -1,5 +1,6 @@
 import {Letter} from './letter'
-import {allRussianLetters} from './gameDescriptions'
+import { Field } from './field';
+import { cellInfoText, scrabbleFieldDescription } from './fieldDescriptions';
 
 export enum GameStatus {
   'NUOVO', 'INIZIATO', 'NELL_PROCESSO', 'COMPLETATO'
@@ -12,9 +13,12 @@ export class Game {
   players: any
   users: string[] = []
   language: Language
+  field: Field
 
   constructor(language: Language) {
-    this.language =language
+    this.language =language ?? Language.Русский
+    scrabbleFieldDescription.cellsInfoText = cellInfoText[this.language]
+    this.field = new Field(scrabbleFieldDescription)
   }
 
 }

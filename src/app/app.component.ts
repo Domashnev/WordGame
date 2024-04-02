@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { saveAs } from 'file-saver'
+import { Game, Language } from './models/game';
 
 @Component({
   selector: 'app-root',
@@ -20,11 +21,19 @@ export class AppComponent implements OnInit {
     'эк', 'эка', 'эх', 'спб', 'ка'
   ]
 
+
+  game: any
   ngOnInit() {
-    this.loadWordsFromFile('assets/books/' + this.fileName + '.txt')
-    // this.cutDictionary(this.fileName + ' слова', 8)
+    this.game = new Game(Language.Русский)
+
   }
 
+
+  /*
+  ngOnInit() {
+    // this.loadWordsFromFile('assets/books/' + this.fileName + '.txt')
+    // this.cutDictionary(this.fileName + ' слова', 8)
+  }
   loadWordsFromFile(fileName: string): void {
 
     fetch(fileName)
@@ -63,4 +72,6 @@ export class AppComponent implements OnInit {
 
       })
   }
+  */
+
 }

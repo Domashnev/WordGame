@@ -1,0 +1,8 @@
+.field {
+  width: 100vw;
+  height: 105vw;
+  max-width: 720px;
+  max-height: 720px;
+  border-collapse: collapse;
+  table-layout: fixed;
+}

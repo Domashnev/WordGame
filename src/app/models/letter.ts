@@ -11,7 +11,7 @@ export class Letter {
       this.char = fLetter.char;
       this.cost = fLetter.cost;
     } else {
-      throw Error('Letter is not found in alphabet!');
+      throw Error(ch + ' - letter is not found in alphabet!');
     }
 
   }
@@ -31,13 +31,6 @@ export class Letter {
       if (cell.letter.cost == 0) { return cell.letter.char.toLowerCase(); }
       return cell.letter.char.toUpperCase();
     } else { return ' '; }
-  }
-
-  private makeLetter(char: string): Letter {
-    const lettera = Object.assign({},
-      this.allLetters.find(item => item.char == char.toUpperCase()));
-    if (lettera) { delete lettera.num; }
-    return lettera;
   }
 
   private fareCampoLetteraDelChar(char: string): Letter {

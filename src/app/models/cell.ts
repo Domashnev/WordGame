@@ -4,8 +4,8 @@ export class Cell {
   id: number;
   row?: number;
   col?: number;
-  disable: boolean;
-  bonus: number;
+  disable: boolean;  // нельзя менять
+  bonus?: number;
   styles: string[];
   info?: string;
   letter?: Letter;
