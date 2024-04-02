@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "WordGame:build:production"
+              "buildTarget": "WordGame:build:production"
             },
             "development": {
-              "browserTarget": "WordGame:build:development"
+              "buildTarget": "WordGame:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "WordGame:build"
+            "buildTarget": "WordGame:build"
           }
         },
         "test": {
