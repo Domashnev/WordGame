@@ -21,8 +21,8 @@ export class AppComponent implements OnInit {
   ]
 
   ngOnInit() {
-    // this.loadWordsFromFile('assets/' + this.fileName + '.txt')
-    this.cutDictionary(this.fileName + ' слова', 8)
+    this.loadWordsFromFile('assets/books/' + this.fileName + '.txt')
+    // this.cutDictionary(this.fileName + ' слова', 8)
   }
 
   loadWordsFromFile(fileName: string): void {
@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
   }
 
   cutDictionary(fileName: string, wordLength: number): void {
-    fetch('assets/' + fileName + '.txt')
+    fetch('assets/books/' + fileName + '.txt')
       .then(response => response.text())
       .then(data => {
         const lineEnd = data.includes('\r\n') ? '\r\n' : (data.includes('\n') ? '\n' : '\r')
