@@ -4,7 +4,7 @@ export class Cell {
   id: number;
   row?: number;
   col?: number;
-  disable: boolean;  // нельзя менять
+  disable: boolean; 
   bonus?: number;
   styles: string[];
   info?: string;

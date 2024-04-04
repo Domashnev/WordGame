@@ -1,4 +1,4 @@
-import { allScarabeoLetters } from './letter';
+import {allScarabeoLetters} from './letterDescription'
 
 export enum Direction {
   Up = 1,

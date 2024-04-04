@@ -5,4 +5,61 @@
   max-height: 720px;
   border-collapse: collapse;
   table-layout: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: green;
+}
+
+.scrabbleField {
+  .app-field {
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-rows: repeat(15, 1fr);
+    align-items: center;
+    border: black solid 2px;
+    margin-top: 5px;
+    margin-right: 3px;
+    cursor: default;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: green;
+  }
+
+  .app-field2020 {
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+    background-color: black;
+    align-items: center;
+    border: black solid 2px;
+    margin-top: 5px;
+    margin-right: 3px;
+    cursor: default;
+  }
+}
+
+  .doubleWord {
+    background-color: rosybrown;
+  }
+  .tripleWord {
+    background-color: red;
+  }
+  .doubleLetter {
+    background-color: rgb(177, 177, 216);
+  }
+  .tripleLetter {
+    background-color: blue;
+  }
+
+.cell-over-image {
+  background-color: transparent;
+  border-color: darkgreen;
+}
+
+.last-word  {
+  background-color: gold;
+}
+
+.active-cell {
+  background: white;
 }
