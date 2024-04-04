@@ -1,4 +1,4 @@
-import {allScarabeoLetters} from './letterDescription'
+import { allScarabeoLetters, LetterType } from './letterDescription'
 
 export enum Direction {
   Up = 1,
@@ -22,7 +22,7 @@ export const cellInfoText = [
 export interface FieldDescription {
   fieldSize: number;
   plateSize: number;
-  letters: any[];
+  letters: LetterType[];
   cellsInfoText: string[];        // Ex. ['2L', '3L', '2P', '3P']
   letterBy2Cells: string[];
   letterBy3Cells: string[];
@@ -40,7 +40,7 @@ export const scrabbleFieldDescription: FieldDescription = {
       , 'r12c1', 'r12c8', 'r12c15', 'r13c7', 'r13c9', 'r15c4', 'r15c12'],
     letterBy3Cells: ['r2c6', 'r2c10', 'r6c2', 'r6c6', 'r6c10', 'r6c14',
                     'r10c2', 'r10c6', 'r10c10', 'r10c14', 'r14c6', 'r14c10'],
-    wordBy2Cells: ['r2c2', 'r3c3', 'r4c4', 'r5c5',  'r2c14', 'r3c13', 'r4r12', 'r2c11',
+    wordBy2Cells: ['r2c2', 'r3c3', 'r4c4', 'r5c5',  'r2c14', 'r3c13', 'r4c12', 'r5c11',
                     'r8c8',
                     'r11c5', 'r12c4', 'r13c3', 'r14c2', 'r11c11', 'r12c12', 'r13c13', 'r14c14'],
     wordBy3Cells: ['r1c1', 'r1c8', 'r1c15', 'r8c1', 'r8c15', 'r15c1', 'r15c8', 'r15c15'],

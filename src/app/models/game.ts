@@ -1,8 +1,7 @@
-import {Letter} from './letter'
 import { Field } from './field';
-import { cellInfoText, scrabbleFieldDescription } from './fieldDescriptions';
+import { cellInfoText, scarabeoFieldDescription, scrabbleFieldDescription } from './fieldDescriptions';
 import {Bag} from './bag'
-import {allRussianLetters} from './letterDescription'
+import { allLetters, allScarabeoLetters, LetterType } from './letterDescription'
 
 export enum GameStatus {
   'NUOVO', 'INIZIATO', 'NELL_PROCESSO', 'COMPLETATO'
@@ -10,19 +9,40 @@ export enum GameStatus {
 export enum Language {
   'Русский', 'English', 'Italiano', 'Spanish'
 }
+export enum GameType { 'Scrabble', 'Erudit', 'Scarabeo'}
+
+export interface GameOptions {
+  language: Language;
+  type: GameType;
+  duplicato?: boolean;
+  blitz?: number; // minutes
+}
 
 export class Game {
   players: any
   users: string[] = []
-  language: Language
   field: Field
   bag: Bag
+  options: GameOptions
+  theme: any
 
-  constructor(language: Language) {
-    this.language =language ?? Language.Русский
-    scrabbleFieldDescription.cellsInfoText = cellInfoText[this.language]
-    this.field = new Field(scrabbleFieldDescription)
-    this.bag = new Bag()
+  constructor(gameOptions: GameOptions) {
+    this.options = gameOptions
+    let fieldDescr
+    if (gameOptions.type === GameType.Scarabeo) {
+      fieldDescr = scarabeoFieldDescription
+    } else {
+      fieldDescr = scrabbleFieldDescription
+      fieldDescr.cellsInfoText = cellInfoText[gameOptions.language]
+      fieldDescr.letters = allLetters[gameOptions.language]
+    }
+
+    this.field = new Field(fieldDescr)
+    this.bag = new Bag(fieldDescr.letters)
+  }
+
+  getAllLetters() : LetterType[] {
+    return allLetters[this.options.language]
   }
 
 }
