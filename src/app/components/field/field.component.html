@@ -2,8 +2,12 @@
   @for (r of field.getRowNumbers(); track $index) {
   <tr>
     @for (cell of field.getRow(r); track cell.id) {
-    <td [className]="cell.styles" [draggable]="!cell.disable">
+    <td [className]="cell.styles">
+      @if (cell.letter) {
+        <app-letter [letter]="cell.letter" [draggable]="!cell.disable"></app-letter>
+      } else {
       {{cell.info}}
+      }
     </td>
     }
   </tr>
