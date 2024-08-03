@@ -9,7 +9,6 @@ import { Field } from '../../models/field';
   styleUrl: './field.component.css'
 })
 export class FieldComponent implements OnInit {
-  // @ts-ignore
   @Input() field: Field;
 
   ngOnInit() {

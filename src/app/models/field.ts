@@ -48,7 +48,4 @@ export class Field {
     return rn
   }
 
-  putLetter(id: number, letter: Letter): void {
-
-  }
 }

@@ -3,7 +3,6 @@ export interface LetterType {
   cost: number;
   num: number;
 }
-
 export const Vocals = ['АЕЁИОУЫЭЮЯ', 'AEIOU', 'AEIOU', 'AEIOU']  // всего 42 гласных фишек в русском + 2 пустышки
 export const allRussianLetters: LetterType[] = [
   {char: 'А', cost: 1, num: 8},

@@ -1,20 +1,13 @@
-import {Letter} from './letter'
-import {allLetters, LetterType} from './letterDescription'
+import {allLetters } from './letterDescription'
 import {Language} from './game'
 
 export class Bag {
   sacco: string;
-  letters: Letter[];
 
   constructor(language: Language) {
-    this.letters = []
-    allLetters[language].forEach(l => {
-      for( let i=0; i < (l.num ?? 1); i++){
-        const newLetter = new Letter(l.char, l.cost)
-        this.letters.push(newLetter)
-      }
-    })
-    this.sacco = this.shuffle(this.letters.map(l => l.char), 3).join('')
+    this.sacco = ''
+    allLetters[language].forEach(l => this.sacco += l.char.repeat(l.num))
+    this.sacco = this.shuffle(this.sacco.split(''), 3).join('')
   }
 
   public shuffle(arr: Array<any>, count: number) {
@@ -29,22 +22,6 @@ export class Bag {
       }
     }
     return arr;
-  }
-
-  getLetterFromBag(): Letter | null {
-    let fromBag: Letter | null = null
-    if (this.letters.length > 5) {
-      const randomIndex = Math.floor((Math.random() * this.letters.length));
-      fromBag = this.letters[randomIndex];
-      this.letters.splice(randomIndex, 1);
-    } else if (this.letters.length) {
-      fromBag = this.letters.pop() ?? null;
-    }
-    return fromBag
-  }
-
-  public putLetterInBag(letter: Letter) {
-    this.letters.push(letter);
   }
 
 }
