@@ -9,7 +9,7 @@ import { saveAs } from 'file-saver'
 export class AppComponent implements OnInit {
   title = 'WordGame';
 
-  fileName = 'Божественная комедия'
+  fileName = 'Дар'
 
   words = new Set()
   badWords = [
@@ -17,7 +17,8 @@ export class AppComponent implements OnInit {
     'бы', 'во', 'гг', 'за', 'на', 'нв', 'ну',
     'об', 'ой', 'от', 'ох', 'со', 'та', 'ту',
     'ух', 'фр', 'фу', 'ха', 'чу', 'шу', 'эй',
-    'эк', 'эка', 'эх', 'спб', 'ка'
+    'эк', 'эка', 'эх', 'спб', 'ка', 'ага', 'ах',
+    'см', 'ась'
   ]
 
   ngOnInit() {
